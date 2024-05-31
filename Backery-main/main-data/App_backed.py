@@ -6,7 +6,7 @@ class Code():
             self.mydb = mysql.connector.Connect(
                 host='localhost',
                 user='root',
-                password='pawan82',
+                password='YOUR PASSWORD',
                 database='BACKERY'
             )
             self.cur = self.mydb.cursor()
