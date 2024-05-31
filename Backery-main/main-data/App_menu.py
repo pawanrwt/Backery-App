@@ -32,13 +32,13 @@ class AppMenu(ctk.CTkFrame):
     def show(self):
         self.pack(fill="both", expand=True, padx=10, pady=10)
         self.background_label.place(x=0, y=0,)
-        self.profile.place(x=1210, y=10)
-        self.profile_label.place(x=1210,y=118)
-        self.menu.place(x=680, y=200)
-        self.oder.place(x=680, y=260)
-        self.trackOrder.place(x=680, y=320)
-        self.logout.place(x=680, y=380)
-        self.back.place(x=680, y=440)
+        self.profile.place(relx=0.994, rely=0.02, anchor="ne")
+        self.profile_label.place(relx=0.994, rely=0.16, anchor="ne")
+        self.menu.place(relx=0.6, rely=0.23, anchor="center")
+        self.oder.place(relx=0.6, rely=0.33, anchor="center")
+        self.trackOrder.place(relx=0.6, rely=0.43, anchor="center")
+        self.logout.place(relx=0.6, rely=0.53, anchor="center")
+        self.back.place(relx=0.6, rely=0.63, anchor="center")
 
     def action(self):
         print("Go to profile")
@@ -146,8 +146,8 @@ class Profile(ctk.CTkFrame):
 
         self.profile.grid(row=0, column=0, padx=2, pady=5)
         self.Name.grid(row=0, column=1, padx=5, pady=5)
-        self.backB.place(x=500, y=40)
-        self.edit.place(x=500,y=40)
+        self.backB.place(relx=0.994, rely=0.36, anchor="ne")
+        self.edit.place(relx=0.910, rely=0.04, anchor="ne")
         self.usernames.grid(row=0,column=0,padx=(80,0),pady=(80,0),sticky="w")
         self.age.grid(row=1,column=0,padx=(80,0),pady=10,sticky="w")
         self.dob.grid(row=2,column=0,padx=(80,0),pady=10,sticky="w")
@@ -167,16 +167,3 @@ class Profile(ctk.CTkFrame):
         me=AppMenu(self.master)
         me.show()
         
-class App(ctk.CTk):
-    def __init__(self):
-        super().__init__()
-        self.geometry("800x600")
-        self.title("BACKRY SYSTEM")
-        self.hp=AppMenu(self)
-    def show(self):
-        self.hp.show()
-        self.mainloop()
-if __name__ == "__main__":
-    print("App Loading")
-    app = App()
-    app.show()
