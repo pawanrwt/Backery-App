@@ -27,7 +27,7 @@ class Menudata(ctk.CTkFrame):
         self.popup = None
 
     def show(self):
-        self.pack(fill="both", expand=True, padx=15, pady=15)
+        self.pack(fill="both", expand=True, padx=10, pady=10)
         self.searchFrame.pack(fill="x", padx=10, pady=(10, 0))
         self.profile.grid(row=0, column=0, padx=10, pady=20)
         self.searching.grid(row=0, column=1, padx=10, pady=20)
@@ -109,13 +109,12 @@ class Order_details(ctk.CTkFrame):
         self.rightframe = ctk.CTkFrame(self, width=50)
         
         self.background_image = Image.open("leftpicfill.png")
-        self.background_image = self.background_image.resize((1300, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(500, 1000))
-        self.background_label = ctk.CTkLabel(self ,image=self.background_photo, text="")
-        self.background_label.pack(padx=0,pady=0,side="left")
+        self.background_image = self.background_image.resize((600, 1000), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(600, 1000))
+        self.background_label = ctk.CTkLabel(self,image=self.background_photo, text="")
         
         self.buttonframe = ctk.CTkFrame(self.rightframe)
-        self.home = ctk.CTkButton(self.buttonframe, text="<Home", font=("sans",20,"bold"),fg_color="green",command=self.home)
+        self.home_button = ctk.CTkButton(self.buttonframe, text="<Home", font=("sans",20,"bold"),fg_color="green",command=self.home)
         self.backB = ctk.CTkButton(self.buttonframe, text="Back>", font=("sans",20,"bold"),fg_color="Black", command=self.back)
         
         self.scrollFrame = ctk.CTkFrame(self.rightframe)
@@ -126,12 +125,13 @@ class Order_details(ctk.CTkFrame):
         self.data = dl.load_order("App-oder_data.xlsx",uname)
 
     def show(self):
-        self.pack(fill="both", expand=True, padx=15, pady=15)
-        self.rightframe.pack(fill="both", padx=0, side="right")
+        self.pack(fill="both", expand=True, padx=10, pady=10)
+        self.background_label.pack(padx=0,pady=0,side="left")
+        self.rightframe.pack(fill="both",expand=True, padx=0, side="right")
         
         self.buttonframe.pack(fill="x", padx=10, pady=0, side="top")
-        self.home.grid(row=0, column=0, padx=40, pady=15)
-        self.backB.grid(row=0, column=1, padx=(420, 0), pady=15)
+        self.home_button.grid(row=0, column=0, padx=40, pady=15)
+        self.backB.grid(row=0, column=1, padx=(345, 0), pady=15)
         
         self.scrollFrame.pack(fill="both", expand=True, padx=10, pady=0)
         self.scrollable_frame.pack(fill="both", expand=True, padx=15, pady=(15,0))
@@ -193,10 +193,10 @@ class About_order(ctk.CTkFrame):
         self.rightframe = ctk.CTkFrame(self)
         
         self.background_image = Image.open("leftpicfill.png")
-        self.background_image = self.background_image.resize((500, 1000), Image.Resampling.LANCZOS)
+        self.background_image = self.background_image.resize((700, 1000), Image.Resampling.LANCZOS)
         self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(700, 1000))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
-        self.background_label.pack(padx=20,pady=10,side="left")
+        
         self.uperframe = ctk.CTkFrame(self.rightframe)
         self.lowerframe = ctk.CTkFrame(self.rightframe)
         
@@ -212,7 +212,8 @@ class About_order(ctk.CTkFrame):
         self.popup=None
     def show(self):
         # Pack the background and right frame
-        self.pack(fill="both",expand=True,padx=0,pady=0)
+        self.pack(fill="both",expand=True,padx=10,pady=10)
+        self.background_label.pack(padx=0,pady=0,side="left")
         self.rightframe.pack(fill="both", expand=True, side="right",padx=0)
 
         # Pack the upper and lower frames within the right frame
