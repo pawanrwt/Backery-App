@@ -9,10 +9,10 @@ class SignUp(ctk.CTkFrame):
     def __init__(self, master,**kwargs):
         super().__init__(master=master,**kwargs)
         self.background_image = Image.open("login_signup.png")
-        self.background_image = self.background_image.resize((1300, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1300, 1000))
+        self.background_image = self.background_image.resize((1500, 1000), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1500, 1000))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        
         self.t1 = ctk.CTkLabel(self, text="User Name", width=80,fg_color="transparent",font=("sans",14,'bold'))
         self.user = ctk.CTkEntry(self)
         self.t2 = ctk.CTkLabel(self, text="Password",width=80, fg_color=None,font=("sans",14,'bold'))
@@ -31,13 +31,14 @@ class SignUp(ctk.CTkFrame):
         return s
         
     def show(self):
-        self.pack(fill="both", expand=True, padx=15, pady=15)
-        self.t1.place(x=580,y=270)
-        self.user.place(x=680,y=270,)
-        self.t2.place(x=580,y=320)
-        self.pas.place(x=680,y=320)
-        self.create.place(x=650,y=400)
-        self.back.place(x=650,y=440,)
+        self.pack(fill="both", expand=True, padx=10, pady=10)
+        self.background_label.place(x=0, y=0,)
+        self.t1.place(x=570,y=270)
+        self.user.place(x=670,y=270,)
+        self.t2.place(x=570,y=320)
+        self.pas.place(x=670,y=320)
+        self.create.place(x=640,y=400)
+        self.back.place(x=640,y=440,)
 
     def goback(self):
         self.destroy()
@@ -46,7 +47,7 @@ class SignUp(ctk.CTkFrame):
 
     def account(self):
         pas=self.pas.get()
-        if len(pas)<8:
+        if len(pas)<8 and pas:
             self.popup.configure(text="*Password must contain more than 8 characters.",font=("sans",15))
             self.popup.place(x=580,y=370,)
         else:
@@ -70,10 +71,10 @@ class Login(ctk.CTkFrame):
     def __init__(self,master,**kwargs):
         super().__init__(master=master,**kwargs)
         self.background_image = Image.open("login_signup.png")
-        self.background_image = self.background_image.resize((1300, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1300, 1000))
+        self.background_image = self.background_image.resize((1500, 1000), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1500, 1000))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        
         self.t1 = ctk.CTkLabel(self, text="User Name",width=80,fg_color="transparent",font=("sans",14,'bold'))
         self.user = ctk.CTkEntry(self)
         self.t2 = ctk.CTkLabel(self, text="Password", width=80,fg_color=None,font=("sans",14,'bold'))
@@ -83,13 +84,14 @@ class Login(ctk.CTkFrame):
         self.back = ctk.CTkButton(self, text="Back", fg_color="black", command=self.goback)
 
     def show(self):
-        self.pack(fill="both", expand=True, padx=15, pady=15)
-        self.t1.place(x=580,y=270)
-        self.user.place(x=680,y=270,)
-        self.t2.place(x=580,y=320)
-        self.pas.place(x=680,y=320)
-        self.log.place(x=650,y=420)
-        self.back.place(x=650,y=460,)
+        self.pack(fill="both", expand=True, padx=10, pady=10)
+        self.background_label.place(x=0, y=0,)
+        self.t1.place(x=570,y=270)
+        self.user.place(x=670,y=270,)
+        self.t2.place(x=570,y=320)
+        self.pas.place(x=670,y=320)
+        self.log.place(x=640,y=420)
+        self.back.place(x=640,y=460,)
 
     def getdata(self):
         uname=self.user.get()
@@ -110,13 +112,13 @@ class Login(ctk.CTkFrame):
         ch=self.getdata()
         if (ch==False):
             self.popup.configure(text="*Password is wrong try again",font=("sans",15))
-            self.popup.place(x=630,y=385,)
+            self.popup.place(x=625,y=385,)
         elif(ch=="False2"):
             self.popup.configure(text="*User name not found,\n Please Enter valid user name",font=("sans",15))
-            self.popup.place(x=630,y=370,)
+            self.popup.place(x=620,y=370,)
         elif(ch=="server"):
             self.popup.configure(text="*Server Error",font=("sans",15))
-            self.popup.place(x=668,y=370,)
+            self.popup.place(x=663,y=370,)
 
         else:
             self.destroy()
