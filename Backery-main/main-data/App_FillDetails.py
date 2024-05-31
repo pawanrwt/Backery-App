@@ -62,38 +62,38 @@ class Details(ctk.CTkFrame):
         self.pack(fill="both", expand=True, padx=10, pady=10)
         self.background_label.place(x=0, y=0,)
 
-        self.name_label.place(x=600, y=100)
-        self.ename.place(x=710, y=100)
+        self.name_label.place(relx=0.48, rely=0.18, anchor="center")
+        self.ename.place(relx=0.6, rely=0.18, anchor="center")
         
-        self.gen.place(x=600, y=150)
-        self.male_radio.place(x=710, y=150)
-        self.female_radio.place(x=810, y=150)
+        self.gen.place(relx=0.48, rely=0.25, anchor="center")
+        self.male_radio.place(relx=0.57, rely=0.25, anchor="center")
+        self.female_radio.place(relx=0.63, rely=0.25, anchor="center")
         
-        self.dob_label.place(x=600, y=200)
-        self.entry_dob_label.place(x=710,y=200)
+        self.dob_label.place(relx=0.48, rely=0.32, anchor="center")
+        self.entry_dob_label.place(relx=0.6, rely=0.32, anchor="center")
         self.edob.place(x=3,y=4)
 
-        self.age_label.place(x=600, y=250)
-        self.eage.place(x=710, y=250)
+        self.age_label.place(relx=0.48, rely=0.39, anchor="center")
+        self.eage.place(relx=0.6, rely=0.39, anchor="center")
         
-        self.email_label.place(x=600, y=300)
-        self.eemail.place(x=710, y=300)
+        self.email_label.place(relx=0.48, rely=0.45, anchor="center")
+        self.eemail.place(relx=0.6, rely=0.45, anchor="center")
         
-        self.ph_label.place(x=600, y=350)
-        self.eph.place(x=710, y=350)
+        self.ph_label.place(relx=0.48, rely=0.52, anchor="center")
+        self.eph.place(relx=0.6, rely=0.52, anchor="center")
 
-        self.add_label.place(x=600,y=400)
-        self.address.place(x=710,y=400)
+        self.add_label.place(relx=0.48, rely=0.59, anchor="center")
+        self.address.place(relx=0.6, rely=0.59, anchor="center")
         
-        self.select_label.place(x=600, y=450)
-        self.choose.place(x=710, y=450)
+        self.select_label.place(relx=0.48, rely=0.66, anchor="center")
+        self.choose.place(relx=0.6, rely=0.66, anchor="center")
 
         if text=="save":
-            self.back.place(x=610,y=550)
-            self.save.place(x=780,y=550)
+            self.back.place(relx=0.5, rely=0.8, anchor="center")
+            self.save.place(relx=0.62, rely=0.8, anchor="center")
         elif text=="update":
-            self.back_menu.place(x=610,y=550)
-            self.updateB.place(x=780,y=550)
+            self.back_menu.place(relx=0.5, rely=0.8, anchor="center")
+            self.updateB.place(relx=0.62, rely=0.8, anchor="center")
 
 
     def getdata(self):
@@ -118,18 +118,18 @@ class Details(ctk.CTkFrame):
         
         if (len(self.ename.get())>18):
             self.popup.configure(text="*Please ensure that your name is no longer than 18 characters.")
-            self.popup.place(x=600, y=500)
+            self.popup.place(relx=0.56, rely=0.73, anchor="center")
         elif self.eph.get() and len(self.eph.get()) !=10:            
             self.popup.configure(text="*Please enter valid mobile number")
-            self.popup.place(x=673, y=500)
+            self.popup.place(relx=0.57, rely=0.73, anchor="center")
         else:
             check = self.getdata()
             if check == False:
                 self.popup.configure(text="*Please fill all details")
-                self.popup.place(x=700, y=500)
+                self.popup.place(relx=0.57, rely=0.73, anchor="center")
             elif check == 10:
-                self.popup.configure(text="*Server Error")
-                self.popup.place(x=710, y=500)
+                self.popup.configure(text="*Email already exists")
+                self.popup.place(relx=0.55, rely=0.73, anchor="center")
             else:
                 print("Your details has saved")
                 self.destroy()
@@ -152,16 +152,16 @@ class Details(ctk.CTkFrame):
     def update(self):
         if (len(self.ename.get())>18):
             self.popup.configure(text="*Please ensure that your name is no longer than 18 characters.")
-            self.popup.place(x=600, y=500)
+            self.popup.place(relx=0.56, rely=0.73, anchor="center")
         elif self.eph.get() and len(self.eph.get()) !=10:
                 
             self.popup.configure(text="*Please enter valid mobile number")
-            self.popup.place(x=670, y=500)
+            self.popup.place(relx=0.57, rely=0.73, anchor="center")
         else:
             check = self.getdata_2()
             if check == False:
                 self.popup.configure(text="*Server Error")
-                self.popup.place(x=710, y=500)
+                self.popup.place(relx=0.6, rely=0.73, anchor="center")
             else:
                 print("Your deatils has updated")
                 self.destroy()
