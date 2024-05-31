@@ -131,7 +131,7 @@ class Order_details(ctk.CTkFrame):
         
         self.buttonframe.pack(fill="x", padx=10, pady=0, side="top")
         self.home_button.grid(row=0, column=0, padx=40, pady=15)
-        self.backB.grid(row=0, column=1, padx=(345, 0), pady=15)
+        self.backB.place(relx=0.974, rely=0.25, anchor="ne")
         
         self.scrollFrame.pack(fill="both", expand=True, padx=10, pady=0)
         self.scrollable_frame.pack(fill="both", expand=True, padx=15, pady=(15,0))
@@ -211,16 +211,15 @@ class About_order(ctk.CTkFrame):
         self.backB = ctk.CTkButton(self.uperframe, text="Back", fg_color="black",font=("Sans",18) , command=self.back)
         self.popup=None
     def show(self):
-        # Pack the background and right frame
         self.pack(fill="both",expand=True,padx=10,pady=10)
         self.background_label.pack(padx=0,pady=0,side="left")
         self.rightframe.pack(fill="both", expand=True, side="right",padx=0)
 
-        # Pack the upper and lower frames within the right frame
+        
         self.uperframe.pack(fill="x", padx=0, pady=0, side="top")
         self.lowerframe.pack(fill="both", expand=True, padx=0, pady=(15, 0))
 
-        # Pack the initial components
+        
         self.profile.grid(row=0, column=0, padx=2, pady=5)
         self.content.grid(row=0, column=1, padx=10, pady=5)
         self.search.grid(row=0, column=2, padx=5, pady=5)
@@ -228,7 +227,7 @@ class About_order(ctk.CTkFrame):
 
 
     def populate(self):
-        # Dummy data to simulate actual function call
+        
         for widget in self.lowerframe.winfo_children():
             widget.destroy()
         food_id = self.content.get()
@@ -265,7 +264,8 @@ class About_order(ctk.CTkFrame):
                 self.phone_label = ctk.CTkLabel(self.lowerframe, text=f"Mobile No: {mobile}", fg_color="transparent", font=("sans", 16))
                 self.address_label = ctk.CTkLabel(self.lowerframe, text=f"Address: {addr}", font=("sans", 16))
                 self.d_status = ctk.CTkLabel(self.lowerframe, text=f"{check}", font=("sans", 16))
-                self.cencel_order=ctk.CTkButton(self.lowerframe,text="Cencel Order",font=("Sans",18,'bold'),text_color="red",fg_color="blue",command =lambda fid=id_food,uname=orderby:self.cencel(fid,user_n))
+                self.cencel_order=ctk.CTkButton(self.lowerframe,text="Cencel Order",font=("Sans",18,'bold'),fg_color="green",command =lambda fid=id_food,uname=orderby:self.cencel(fid,user_n))
+                
                 # Pack the dynamic components
                 self.image_label.grid(row=0, column=0, padx=20, pady=(100,0))
                 self.food_id_label.grid(row=0, column=1, padx=50, pady=(0,80),sticky="w")
