@@ -6,10 +6,10 @@ class Start(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
         self.background_image = Image.open("start.png")
-        self.background_image = self.background_image.resize((1300, 900), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1300, 900))
+        self.background_image = self.background_image.resize((2000, 2000), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(2000, 2000))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        
         self.l_title = ctk.CTkLabel(self, text="_ _WELCOME_ _", font=("sans", 20))
         self.b_start = ctk.CTkButton(self, height=40, width=200, text="Start", command=self.start_action, fg_color="green", font=("sans", 15))
         self.b_settings = ctk.CTkButton(self, height=40, width=200, text="🔙", command=self.back, fg_color="blue", font=("sans", 30))
@@ -25,29 +25,30 @@ class Start(ctk.CTkFrame):
         exit(0)
 
     def show(self):
-        self.pack(fill="both", expand=True,pady=15)
-        self.l_title.pack(pady=(360,10))
-        self.b_start.pack(pady=10)
-        self.b_settings.pack(pady=10)
+        self.pack(fill="both", expand=True,padx=10,pady=10)
+        self.background_label.place(x=0,y=0)
+        self.l_title.place(x=580,y=300)
+        self.b_start.place(x=560,y=340)
+        self.b_settings.place(x=560,y=390)
 
 class HomePanel(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
-        
         self.background_image = Image.open("home.png")
-        self.background_image = self.background_image.resize((1300, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1300, 1000))
+        self.background_image = self.background_image.resize((1500, 1000), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1500, 1000))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        
         self.sign_up = ctk.CTkButton(self, text="Sign up", fg_color="Green", command=self.signing,height=40, width=200,font=("sans",20))
         self.login = ctk.CTkButton(self, text="Login", fg_color="blue",command=self.logining,height=40, width=200,font=("sans",20))
-        self.back = ctk.CTkButton(self, text="🔙", width=7,height=1,fg_color="black",bg_color="red",font=("sans",30),command=self.back_action,border_width=10)
+        self.back = ctk.CTkButton(self, text="🔙", width=7,height=2,fg_color="darkblue",bg_color="darkblue",font=("sans",40),command=self.back_action,)
 
     def show(self):
-        self.pack(fill="both", expand=True, pady=30, padx=30)
-        self.back.grid(row=0, column=0, padx=(1200,10), pady=20,)
-        self.sign_up.grid(row=1, column=0,  pady=(180, 10))
-        self.login.grid(row=2, column=0, pady=10)
+        self.pack(fill="both", expand=True, pady=10, padx=10)
+        self.background_label.place(x=0, y=0)
+        self.back.place(x=1270,y=20)
+        self.sign_up.place(x=560,y=320)
+        self.login.place(x=560,y=380)
 
     def signing(self):
         self.destroy()
