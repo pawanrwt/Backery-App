@@ -12,10 +12,10 @@ class Details(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
         self.background_image = Image.open("menu.png")
-        self.background_image = self.background_image.resize((1300, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1300, 1000))
+        self.background_image = self.background_image.resize((1500, 1000), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1500, 1000))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
-        self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
+        
 
         self.name_label = ctk.CTkLabel(self, text="Name",width=90,font=("sans",20,'bold'),fg_color="white")
         self.age_label = ctk.CTkLabel(self, text="Age",width=90,font=("sans",20,'bold'),fg_color="white")
@@ -34,11 +34,12 @@ class Details(ctk.CTkFrame):
         self.address=ctk.CTkEntry(self,width=200)
         self.choice = ctk.StringVar(value="")
         self.choose = ctk.CTkOptionMenu(self, bg_color="transparent", variable=self.choice, values=['Sweet', 'Crunchy', 'Spicy', 'Creamy', 'Cheesy', 'Fruity'], font=("sans",18,'bold'),width=200)
-        self.edob = DateEntry(self, width=30, background='darkblue', foreground='white', borderwidth=2)
+        self.entry_dob_label=ctk.CTkLabel(self,text="",width=200,fg_color="white")
+        self.edob = DateEntry(self.entry_dob_label, width=28, background='darkblue', foreground='white', borderwidth=2)
         self.edob.bind("<<DateEntrySelected>>", self.calculate_age)
         self.gender_var = ctk.StringVar(value=None)
-        self.male_radio = ctk.CTkRadioButton(self, text="Male", variable=self.gender_var, value="male", hover_color="Green")
-        self.female_radio = ctk.CTkRadioButton(self, text="Female", variable=self.gender_var, value="female", hover_color="Green")
+        self.male_radio = ctk.CTkRadioButton(self, text="Male", variable=self.gender_var, value="male", hover_color="Green",fg_color="white")
+        self.female_radio = ctk.CTkRadioButton(self, text="Female", variable=self.gender_var, value="female", hover_color="Green",fg_color="white")
         self.popup = ctk.CTkLabel(self, text="", text_color="red")
         self.back = ctk.CTkButton(self, text="Back", fg_color="black", command=self.backaction)
         self.save = ctk.CTkButton(self, text="Save", fg_color="Green", command=self.saveaction,font=("sans",18,'bold'))
@@ -58,7 +59,8 @@ class Details(ctk.CTkFrame):
 
     def show(self,text):
         self.check=text
-        self.pack(fill="both", expand=True, padx=33, pady=10)
+        self.pack(fill="both", expand=True, padx=10, pady=10)
+        self.background_label.place(x=0, y=0,)
 
         self.name_label.place(x=600, y=100)
         self.ename.place(x=710, y=100)
@@ -68,7 +70,8 @@ class Details(ctk.CTkFrame):
         self.female_radio.place(x=810, y=150)
         
         self.dob_label.place(x=600, y=200)
-        self.edob.place(x=710, y=200)
+        self.entry_dob_label.place(x=710,y=200)
+        self.edob.place(x=3,y=4)
 
         self.age_label.place(x=600, y=250)
         self.eage.place(x=710, y=250)
@@ -118,15 +121,15 @@ class Details(ctk.CTkFrame):
             self.popup.place(x=600, y=500)
         elif self.eph.get() and len(self.eph.get()) !=10:            
             self.popup.configure(text="*Please enter valid mobile number")
-            self.popup.place(x=660, y=500)
+            self.popup.place(x=673, y=500)
         else:
             check = self.getdata()
             if check == False:
                 self.popup.configure(text="*Please fill all details")
-                self.popup.place(x=670, y=500)
+                self.popup.place(x=700, y=500)
             elif check == 10:
                 self.popup.configure(text="*Server Error")
-                self.popup.place(x=690, y=500)
+                self.popup.place(x=710, y=500)
             else:
                 print("Your details has saved")
                 self.destroy()
