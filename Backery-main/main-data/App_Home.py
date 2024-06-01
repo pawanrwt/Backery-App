@@ -5,9 +5,12 @@ import App_LoginPanel as lo
 class Start(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
+        sw=self.winfo_screenwidth()
+        sh=self.winfo_screenheight()
+        print("Your screen width : ",sw,"\nYour screen height= ",sh)
         self.background_image = Image.open("start.png")
-        self.background_image = self.background_image.resize((2000, 2000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(2000, 2000))
+        self.background_image = self.background_image.resize((sw, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(sw, sh))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
         self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -29,14 +32,16 @@ class Start(ctk.CTkFrame):
         self.pack(fill="both", expand=True, padx=10, pady=10)
         self.l_title.place(relx=0.5, rely=0.45, anchor="center")
         self.b_start.place(relx=0.5, rely=0.52, anchor="center")
-        self.b_settings.place(relx=0.5, rely=0.59, anchor="center") 
+        self.b_settings.place(relx=0.5, rely=0.59, anchor="center")  # Top-right corner
 
 class HomePanel(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
+        sw=self.winfo_screenwidth()
+        sh=self.winfo_screenheight()
         self.background_image = Image.open("home.png")
-        self.background_image = self.background_image.resize((1500, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1500, 1000))
+        self.background_image = self.background_image.resize((sw, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(sw, sh))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
         self.background_label.place(x=0, y=0, relwidth=1, relheight=1)
 
@@ -48,7 +53,8 @@ class HomePanel(ctk.CTkFrame):
         self.pack(fill="both", expand=True, pady=10, padx=10)
         self.sign_up.place(relx=0.5, rely=0.5, anchor="center")
         self.login.place(relx=0.5, rely=0.58, anchor="center")
-        self.back.place(relx=0.994, rely=0.02, anchor="ne") 
+        self.back.place(relx=0.994, rely=0.02, anchor="ne")  # Top-right corner
+
     def signing(self):
         self.destroy()
         go = lo.SignUp(self.master)
