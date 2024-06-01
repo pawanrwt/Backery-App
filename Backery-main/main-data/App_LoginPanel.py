@@ -8,9 +8,11 @@ import App_menu as am
 class SignUp(ctk.CTkFrame):
     def __init__(self, master,**kwargs):
         super().__init__(master=master,**kwargs)
+        sw=self.winfo_screenwidth()
+        sh=self.winfo_screenheight()
         self.background_image = Image.open("login_signup.png")
-        self.background_image = self.background_image.resize((2000, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(2000, 1000))
+        self.background_image = self.background_image.resize((sw, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(sw, sh))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
         
         self.t1 = ctk.CTkLabel(self, text="User Name", width=80,fg_color="transparent",font=("sans",14,'bold'))
@@ -70,9 +72,11 @@ class SignUp(ctk.CTkFrame):
 class Login(ctk.CTkFrame):
     def __init__(self,master,**kwargs):
         super().__init__(master=master,**kwargs)
+        sw=self.winfo_screenwidth()
+        sh=self.winfo_screenheight()
         self.background_image = Image.open("login_signup.png")
-        self.background_image = self.background_image.resize((2000, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(2000, 1000))
+        self.background_image = self.background_image.resize((sw, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(sw, sh))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
         
         self.t1 = ctk.CTkLabel(self, text="User Name",width=80,fg_color="transparent",font=("sans",14,'bold'))
