@@ -10,13 +10,13 @@ import App_FillDetails as fd
 class AppMenu(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
-        
+        sw=self.winfo_screenwidth()
+        sh=self.winfo_screenheight()
         self.background_image = Image.open("menu.png")
-        self.background_image = self.background_image.resize((1500, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1500, 1000))
+        self.background_image = self.background_image.resize((sw, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(sw, sh))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
         
-
         image_path = "profile.png"
         image = Image.open(image_path)
         image = image.resize((100, 100), Image.Resampling.LANCZOS)  
@@ -109,11 +109,12 @@ class Profile(ctk.CTkFrame):
             print("details : ",details)      
         except Exception as e:
             print("Exception: ",e)
-
+        
+        sh=self.winfo_screenheight()
         self.rightframe = ctk.CTkFrame(self)
         self.background_image = Image.open("leftpicfill.png")
-        self.background_image = self.background_image.resize((500, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(700, 1000))
+        self.background_image = self.background_image.resize((500, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(700, sh))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
     
         self.uperframe = ctk.CTkFrame(self.rightframe)
