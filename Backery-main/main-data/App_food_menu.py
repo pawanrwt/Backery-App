@@ -105,12 +105,14 @@ class Menudata(ctk.CTkFrame):
 class Order_details(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
+
+        sh=self.winfo_screenheight()
         self.configure(fg_color="white")
         self.rightframe = ctk.CTkFrame(self, width=50)
         
         self.background_image = Image.open("leftpicfill.png")
-        self.background_image = self.background_image.resize((600, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(600, 1000))
+        self.background_image = self.background_image.resize((600, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(600, sh))
         self.background_label = ctk.CTkLabel(self,image=self.background_photo, text="")
         
         self.buttonframe = ctk.CTkFrame(self.rightframe)
@@ -189,12 +191,13 @@ class Order_details(ctk.CTkFrame):
 class About_order(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
-
+       
+        sh=self.winfo_screenheight()
         self.rightframe = ctk.CTkFrame(self)
         
         self.background_image = Image.open("leftpicfill.png")
-        self.background_image = self.background_image.resize((700, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(700, 1000))
+        self.background_image = self.background_image.resize((700, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(700, sh))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
         
         self.uperframe = ctk.CTkFrame(self.rightframe)
