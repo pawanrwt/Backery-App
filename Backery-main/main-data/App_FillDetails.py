@@ -11,9 +11,11 @@ import App_menu as am
 class Details(ctk.CTkFrame):
     def __init__(self, master, **kwargs):
         super().__init__(master=master, **kwargs)
+        sw=self.winfo_screenwidth()
+        sh=self.winfo_screenheight()
         self.background_image = Image.open("menu.png")
-        self.background_image = self.background_image.resize((1500, 1000), Image.Resampling.LANCZOS)
-        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(1500, 1000))
+        self.background_image = self.background_image.resize((sw, sh), Image.Resampling.LANCZOS)
+        self.background_photo = ctk.CTkImage(light_image=self.background_image, size=(sw, sh))
         self.background_label = ctk.CTkLabel(self, image=self.background_photo, text="")
         
 
